@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connectify | Chatrooms Info</title>
+    <link rel="icon" href="/logo.png" type="image/icon type">
+    <link rel="stylesheet" href="https://cdn.tailwindcss.com/2.2.19/tailwind.min.css">
+    <style>
+        /* Custom CSS styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f5f8;
+        }
+
+        header {
+            background-color: #142c4c;
+            color: white;
+            padding: 1rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .title-font {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #142c4c;
+        }
+
+        .chatroom-info {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .chatroom-info h1 {
+            font-size: 2rem;
+            color: #142c4c;
+            margin-bottom: 1rem;
+        }
+
+        .chatroom-info p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .chatroom-list {
+            margin-top: 2rem;
+        }
+
+        .chatroom {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .chatroom h2 {
+            font-size: 1.5rem;
+            color: #142c4c;
+            margin-bottom: 0.5rem;
+        }
+
+        .chatroom p {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .cta-button {
+            background-color: #142c4c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            background-color: #0a1e38;
+        }
+
+        /* Add this custom style for the chatroom */
+        .chatroom-container {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <!-- Header content-->
+        </div>
+    </header>
+    <section class="text-gray-600 body-font">
+        <div class="container px-5 py-8 mx-auto">
+            <div class="chatroom-info">
+                <h1 class="title-font font-medium text-3xl text-gray-900">Chatrooms Info</h1>
+                <p class="leading-relaxed mt-4">
+                    Explore our diverse range of chatrooms designed to help you connect with people who share your
+                    interests and experiences. Join discussions, make new friends, and find support within our
+                    communities.
+                </p>
+                <div class="chatroom-list">
+                    <!-- Chatroom 1 -->
+                    <div class="chatroom">
+                        <h2>Technology Enthusiasts</h2>
+                        <p>Discuss the latest tech trends, gadgets, and innovations with fellow tech enthusiasts.</p>
+                    </div>
+                    <!-- Chatroom 2 -->
+                    <div class="chatroom">
+                        <h2>Travel and Adventure Seekers</h2>
+                        <p>Share your travel experiences, get trip recommendations, and connect with fellow travelers.
+                        </p>
+                    </div>
+                    <!-- We can Add more chatrooms as per need -->
+                </div>
+                <a href="/register.html" class="cta-button">Join
+<!-- We can Add more chatrooms as per need -->
+<div class="chatroom">
+    <h2>Chatroom</h2>
+    <div id="messages"></div>
+    <input id="messageInput" autocomplete="off" /><button onclick="sendMessage()">Send</button>
+</div>
+
+<!-- Include the following script for WebSocket handling -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+<script>
+    const socket = io();
+
+    // Function to send a chat message
+    function sendMessage() {
+        const messageInput = document.getElementById('messageInput');
+        const message = messageInput.value;
+        socket.emit('chat message', message);
+        messageInput.value = '';
+    }
+
+    // Function to display received messages
+    socket.on('chat message', (message) => {
+        const messagesDiv = document.getElementById('messages');
+        const messageElement = document.createElement('p');
+        messageElement.textContent = message;
+        messagesDiv.appendChild(messageElement);
+    });
+</script>
+
+<a href="/register.html" class="cta-button">Join a Chatroom</a>
+</div>
+</div>
+</section>
+</body>
+
+</html>
